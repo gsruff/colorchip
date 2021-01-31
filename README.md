@@ -4,7 +4,7 @@ A simple script to read hex color values from a text file and output solid 'colo
 ## Dependencies
 - [Pillow](https://github.com/python-pillow/Pillow "Pillow")
 ## Usage
-```shell
+```
     usage: colorchip.py [-h] -i FILE [-d DIMENSIONS]
     
     required arguments:
