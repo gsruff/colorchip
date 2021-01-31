@@ -9,9 +9,12 @@ def dims(s):
         raise argparse.ArgumentTypeError('Dimensions must be x,y')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--input', dest='file', help='input file',
+parser._action_groups.pop()
+required = parser.add_argument_group('required arguments')
+optional = parser.add_argument_group('optional arguments')
+required.add_argument('-i', '--input', dest='file', help='input file',
                     type=argparse.FileType('r'), required=True)
-parser.add_argument('-d', '--dimensions',
+optional.add_argument('-d', '--dimensions',
                     help='dimensions of generated image in x,y format. default is 100,100.',
                     type=dims, default=(100,100))
 args = parser.parse_args()
