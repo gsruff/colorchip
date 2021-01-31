@@ -31,6 +31,8 @@ with args.file as colors:
         hex = re.search(r'^(?:[0-9a-fA-F]{3}){1,2}$', color)
         if hex:
             im = Image.new('RGB',args.dimensions,'#' + color)
+            # TODO: Add argument to allow specifying output path
+            # TODO: Add argument to allow specifying image format
             im.save(color + '.png')
         else:
             print('Hex color code \'{}\' on line {} is invalid.'.format(color,line_num))

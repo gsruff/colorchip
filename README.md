@@ -17,3 +17,5 @@ A simple script to read hex color values from a text file and output solid 'colo
 ```
 ## Input File
 See example 'colors.txt'. Beginning lines with # is also allowed.
+## Output
+Output image files are in PNG format and are saved to the same location as colorchip.py.
