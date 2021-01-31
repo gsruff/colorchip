@@ -1,12 +1,24 @@
+import argparse
 from PIL import Image
 
-colors = open('colors.txt', 'r')
+def dims(s):
+    try:
+        x, y = map(int, s.split(','))
+        return x, y
+    except:
+        raise argparse.ArgumentTypeError('Dimensions must be x,y')
 
-colors_list = []
-for line in colors:
-    colors_list.append(line.strip())
-colors.close()
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--input', dest='file', help='input file',
+                    type=argparse.FileType('r'), required=True)
+parser.add_argument('-d', '--dimensions',
+                    help='dimensions of generated image in x,y format. default is 100,100.',
+                    type=dims, default=(100,100))
+args = parser.parse_args()
 
-for color in colors_list:
-    im = Image.new('RGB',(100,100),'#' + color)
-    im.save(color + '.png')
+with args.file as colors:
+    for line in colors:
+        color = line.strip()
+        # TODO: check line for proper hex color value format
+        im = Image.new('RGB',args.dimensions,'#' + color)
+        im.save(color + '.png')
