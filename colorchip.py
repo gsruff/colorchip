@@ -55,7 +55,7 @@ with args.file as colors:
         hex = re.search(r'^(?:[0-9a-fA-F]{3}){1,2}$', color)
         if hex:
             im = Image.new('RGB',args.dimensions,'#' + color)
-            im.save(args.output + '/' + color + '.' + args.format[0])
+            im.save(args.output + '/' + color + '.' + args.format)
         else:
             print('Hex color code \'{}\' on line {} is invalid.'.format(color,line_num))
         line_num += 1
